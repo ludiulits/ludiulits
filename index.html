@@ -21,6 +21,12 @@
         <script src="js/modernizr.custom.js"></script>
         <script type="text/javascript" src="js/jquery.fullPage.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
+<!-- Load photos from another html file -->
+        <script>
+$(function(){
+    $("#fullpage").load("photos.html");
+});
+        </script>
     </head>
 
     <body>
@@ -43,7 +49,8 @@
                 <ul>
                     <li><a class="icons icon-vk transition" target="_blank" href="https://vk.com"></a></li>
                     <li><a class="icons icon-ig transition" target="_blank" href="https://instagram.com"></a></li>
-                    <li><a class="icons icon-tm transition" target="_blank" href="https://tumblr.com"></a></li>
+                    <li><a class="icons icon-tm transition" target="_blank"
+                            href="https://ludiulits.tumblr.com"></a></li>
                     <li><a class="icons icon-fb transition" target="_blank" href="https://facebook.com"></a></li>
                     <li><a class="icons icon-pt transition" target="_blank" href="https://pinterest.com"></a></li>
                 </ul>
@@ -61,14 +68,13 @@
         <!-- Main -->
         <div class="page-content">
             <div class="wrapper">
-                <div id="fullpage">
-                    <div class="section">
+                <div id="fullpage"> <!--
+                    <div class="section"> 
                         <div class="slide" data-anchor="slide1">
                             <img src="" data-src="https://66.media.tumblr.com/3f9de9483a7ac35f1b0dbba4c2abd75c/tumblr_oamgqq8dEG1vrfwhwo1_500.jpg" class="photo">
                         </div>
                         <div class="slide" data-anchor="slide2">Two 2</div>
-                    </div>
-                    <div class="section">Three</div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -105,7 +111,6 @@
                         </div>
                         <div class="contact-block contact-submit">
                             <input value="Submit" name="submit" id="contact-submit" class="transition button" type="submit">
-                            <input name="action" value="subscribe" type="hidden">
                         </div>
                 </div>
                     </form>
@@ -115,7 +120,7 @@
                 <ul>
                     <li><a href="https://vk.com">VK</a></li>
                     <li><a href="https://instagram.com">Instagram</a></li>
-                    <li><a href="https://tumblr.com">Tumblr</a></li>
+                    <li><a href="https://ludiulits.tumblr.com">Tumblr</a></li>
                     <li><a href="https://facebook.com">Facebook</a></li>
                     <li><a href="https://pinterest.com">Pinterest</a></li>
                 </ul>
