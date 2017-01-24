@@ -21,12 +21,6 @@
         <script src="js/modernizr.custom.js"></script>
         <script type="text/javascript" src="js/jquery.fullPage.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
-<!-- Load photos from another html file -->
-        <script>
-$(function(){
-    $("#fullpage").load("photos.html");
-});
-        </script>
     </head>
 
     <body>
@@ -50,7 +44,7 @@ $(function(){
                     <li><a class="icons icon-vk transition" target="_blank" href="https://vk.com"></a></li>
                     <li><a class="icons icon-ig transition" target="_blank" href="https://instagram.com"></a></li>
                     <li><a class="icons icon-tm transition" target="_blank"
-                            href="https://ludiulits.tumblr.com"></a></li>
+                                                            href="https://ludiulits.tumblr.com"></a></li>
                     <li><a class="icons icon-fb transition" target="_blank" href="https://facebook.com"></a></li>
                     <li><a class="icons icon-pt transition" target="_blank" href="https://pinterest.com"></a></li>
                 </ul>
@@ -68,13 +62,7 @@ $(function(){
         <!-- Main -->
         <div class="page-content">
             <div class="wrapper">
-                <div id="fullpage"> <!--
-                    <div class="section"> 
-                        <div class="slide" data-anchor="slide1">
-                            <img src="" data-src="https://66.media.tumblr.com/3f9de9483a7ac35f1b0dbba4c2abd75c/tumblr_oamgqq8dEG1vrfwhwo1_500.jpg" class="photo">
-                        </div>
-                        <div class="slide" data-anchor="slide2">Two 2</div>
-                    </div> -->
+                <div id="fullpage"> 
                 </div>
             </div>
         </div>
@@ -93,8 +81,8 @@ $(function(){
                 <p>Write me some letters...</p>
                 <div id="cform">
                     <form action="https://formspree.io/gera@ludiulits.ru"
-                        class="contact-form" id="contact-form"
-                        name="contact-form" method="POST">
+                          class="contact-form" id="contact-form"
+                                               name="contact-form" method="POST">
                         <div class="contact-block">
                             <input name="cname" class="required contact-input" id="cname" placeholder="* Name" required="" type="text">
                         </div>
@@ -134,5 +122,30 @@ $(function(){
         <script src="js/classie.js"></script>
         <script src="js/overlay.js"></script>
         <script src="js/pace.js"></script>
+        <script>
+
+// Retrieve photos from tumblr using API V2.
+var tumblrRequest = $.ajax({
+    url:
+        "http://api.tumblr.com/v2/blog/ludiulits.tumblr.com/posts?api_key=LAXbpFBp4IE09M3c6Qv6jSuQnkBiTwFlNHCwUj56oCI46QICor&limit=40",
+    dataType: 'jsonp',
+    success: function(img){
+
+        var i = 0; // counter
+        var $gallery = $('#fullpage');
+
+        while (i < 20) { 
+            var photourl = img.response.posts[i].photos[0].alt_sizes[0].url; 
+            $gallery.append('<div class="section"><img src=' + photourl + ' class="photo"></div>');
+            i++; // step
+        } // END WHILE
+    } // END IMG FUNCTION
+});
+
+// When images are loaded, call fullpage.js
+tumblrRequest.done(function() {
+    $('#fullpage').fullpage();
+});
+        </script>
     </body>
 </html>
